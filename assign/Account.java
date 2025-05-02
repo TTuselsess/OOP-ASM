@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package assign;
 
 //import java.util.ArrayList;
@@ -77,7 +73,19 @@ public class Account{
     }
 
     public void setContact(String contact) {
-        this.contact = contact;
+        String mContactFormat = "+6";
+        if (contact != null && !contact.trim().isEmpty()) {
+            String trimmedContact = contact.trim(); //trim down the contact input, if confirm no empty input
+            if (!trimmedContact.startsWith(mContactFormat)) {
+                this.contact = mContactFormat + trimmedContact;
+                //put +6 together with the trimmed input if +6 is confirmed not there
+            }else{
+                this.contact = trimmedContact; // Already starts with +6, remained the same
+            }
+        }else{
+            this.contact = "";
+        }
+        System.out.println(this.contact);
     }
 
     public String geteContact() {
@@ -85,7 +93,20 @@ public class Account{
     }
 
     public void seteContact(String eContact) {
-        this.eContact = eContact;
+        System.out.println("seteContact() called with: " + eContact);
+        String mContactFormat = "+6";
+        if (eContact != null && !eContact.trim().isEmpty()) {
+            String trimmedEContact = eContact.trim(); //trim down the contact input, if confirm no empty input
+            if (!trimmedEContact.startsWith(mContactFormat)) { 
+                this.eContact = mContactFormat + trimmedEContact; 
+                //put +6 together with the trimmed input if +6 is confirmed not there
+            }else{
+                this.eContact = trimmedEContact; // Already starts with +6, remained the same
+            }
+        }else{
+            this.eContact = "";
+        }
+        System.out.println("contact attribute is now: " + this.eContact);
     }
     
 //    //Method
